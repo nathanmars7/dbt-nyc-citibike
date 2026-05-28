@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: mart_citibike_daily_weather
+    description: "Daily Citibike trip counts joined with NYC weather data for 2016-2018. One row per day."
+    columns:
+      - name: trip_date
+        description: "The date of the trips."
+        data_tests:
+          - not_null
+          - unique
+      - name: total_trips
+        description: "Total number of trips on that day."
+        data_tests:
+          - not_null
+      - name: is_rainy
+        description: "True if precipitation exceeded 0.1 inches."
+      - name: is_freezing
+        description: "True if average temperature was below 32F."
+
+  - name: mart_citibike_by_usertype
+    description: "Daily Citibike trip breakdown by user type for 2016-2018."
+    columns:
+      - name: trip_date
+        description: "The date of the trips."
+        data_tests:
+          - not_null
+      - name: usertype
+        description: "Type of user — Subscriber or Customer."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+               values: ['Subscriber', 'Customer']
+      - name: total_trips
+        description: "Total number of trips for this user type on that day."
+        data_tests:
+          - not_null

@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_citibike_trips
+    description: "Cleaned Citibike trip records for 2016-2018."
+    columns:
+      - name: bikeid
+        description: "Unique identifier for the bike."
+        data_tests:
+          - not_null
+      - name: trip_date
+        description: "Date the trip started."
+        data_tests:
+          - not_null
+      - name: usertype
+        description: "Type of user — Subscriber or Customer."
+        data_tests:
+          - accepted_values:
+              arguments:
+               values: ['Subscriber', 'Customer']
+
+  - name: stg_weather_nyc
+    description: "Daily weather readings from Central Park station for 2016-2018."
+    columns:
+      - name: weather_date
+        description: "Date of the weather reading."
+        data_tests:
+          - not_null
+          - unique
+      - name: avg_temp_f
+        description: "Average temperature in Fahrenheit."
+        data_tests:
+          - not_null

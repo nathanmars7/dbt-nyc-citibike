@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: new_york_citibike
+    database: bigquery-public-data
+    schema: new_york_citibike
+    description: "NYC Citibike trip data provided by Lyft."
+
+    tables:
+      - name: citibike_trips
+        description: "Individual Citibike trip records including station, duration and user info."
+
+  - name: noaa_gsod
+    database: bigquery-public-data
+    schema: noaa_gsod
+    description: "Global Surface Summary of Day weather data from NOAA."
+
+    tables:
+      - name: gsod2016
+        description: "Daily weather readings for 2016."
+      - name: gsod2017
+        description: "Daily weather readings for 2017."
+      - name: gsod2018
+        description: "Daily weather readings for 2018."
